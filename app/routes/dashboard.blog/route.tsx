@@ -2,13 +2,8 @@
 import { useState } from "react";
 import { Form, useLoaderData } from "@remix-run/react";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
-import { auth } from "~/.server/auth";
 
 export async function loader({ request }: LoaderFunctionArgs) {
-    await auth.isAuthenticated(request, {
-        failureRedirect: "/login",
-    });
-
     // TODO: Fetch blog posts from your database
     const posts = [
         { id: 1, title: "First Blog Post", content: "This is the first post." },
